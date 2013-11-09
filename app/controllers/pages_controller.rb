@@ -7,4 +7,7 @@ class PagesController < ApplicationController
 
   def zazz
   end
+
+  def blaze
+  end
 end
