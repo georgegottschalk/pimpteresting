@@ -26,4 +26,8 @@ Pinteresting::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  # Required for Heroku
+  # Note - set to actual host
+  config.action_mailer.default_url_options = { :host => 'pimpteresting.herokuapp.com' }
 end
