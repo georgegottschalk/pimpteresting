@@ -5,5 +5,8 @@
   <%= @pimp.description %>
 </p>
 
-<%= link_to 'Edit', edit_pimp_path(@pimp) %> |
-<%= link_to 'Back', pimps_path %>
+<% if @pimp.user == current_user %>
+	<%= link_to 'Edit', edit_pimp_path(@pimp) %> |
+<% end %>
+
+	<%= link_to 'Back', pimps_path %>

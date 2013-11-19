@@ -1,5 +1,7 @@
 class PimpsController < ApplicationController
   before_action :set_pimp, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:create, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @pimps = Pimp.all
@@ -9,14 +11,15 @@ class PimpsController < ApplicationController
   end
 
   def new
-    @pimp = Pimp.new
+    @pimp = current_user.pimps.build
   end
 
   def edit
+    @pimp = Pimp.find(params[:id])
   end
 
   def create
-    @pimp = Pimp.new(pimp_params)
+    @pimp = current_user.pimps.build(pimp_params)
 
       if @pimp.save
         redirect_to @pimp, notice: 'Pimp was successfully created.' 
@@ -46,6 +49,11 @@ class PimpsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_pimp
       @pimp = Pimp.find(params[:id])
+    end
+
+    def correct_user
+      @pimp = current_user.pimps.find_by(id: params[:id])
+      redirect_to pimps_path, notice: "You aint authorized to fuck with that!" if @pimp.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

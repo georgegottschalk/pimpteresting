@@ -4,8 +4,8 @@
   <thead>
     <tr>
       <th>Description</th>
-      <th></th>
-      <th></th>
+      <th>Pimp ID</th>
+      <th>Pimp Email</th>
       <th></th>
     </tr>
   </thead>
@@ -14,9 +14,13 @@
     <% @pimps.each do |pimp| %>
       <tr>
         <td><%= pimp.description %></td>
+        <td><%= pimp.user_id %></td>
+        <td><%= pimp.user.email if pimp.user %></td>
         <td><%= link_to 'Show', pimp %></td>
-        <td><%= link_to 'Edit', edit_pimp_path(pimp) %></td>
-        <td><%= link_to 'Destroy', pimp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% if pimp.user == current_user %>
+            <td><%= link_to 'Edit', edit_pimp_path(pimp) %></td>
+            <td><%= link_to 'Destroy', pimp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +28,6 @@
 
 <br>
 
-<%= link_to 'New Pimp', new_pimp_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Pimp', new_pimp_path %>
+<% end %>
