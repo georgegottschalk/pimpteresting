@@ -1,6 +1,6 @@
 class PimpsController < ApplicationController
   before_action :set_pimp, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -58,6 +58,6 @@ class PimpsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pimp_params
-      params.require(:pimp).permit(:description)
+      params.require(:pimp).permit(:description, :image)
     end
 end

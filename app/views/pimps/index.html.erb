@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+      <th>Image</th>
       <th>Description</th>
       <th>Pimp ID</th>
       <th>Pimp Email</th>
@@ -13,6 +14,7 @@
   <tbody>
     <% @pimps.each do |pimp| %>
       <tr>
+        <td><%= image_tag pimp.image.url(:medium) %></td>
         <td><%= pimp.description %></td>
         <td><%= pimp.user_id %></td>
         <td><%= pimp.user.email if pimp.user %></td>
