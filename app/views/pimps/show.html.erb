@@ -6,13 +6,21 @@
 			<div class="panel-heading center">
 				<%= image_tag @pimp.image.url(:medium) %>
 			</div>	
-			<div class="panel-body">
+			<div class="panel-body center">
 				<p><%= @pimp.description %></p>	
 				<p><strong><%= @pimp.user.email if @pimp.user %></strong></p>
 
 				<% if @pimp.user == current_user %>
-					<%= link_to 'Edit', edit_pimp_path(@pimp) %> |
-					<%= link_to 'Back', pimps_path %>
+				<div class="center">
+					<%= link_to edit_pimp_path(@pimp) do %> 
+						<span class="glyphicon glyphicon-cog"></span>
+						edit
+					<% end %>
+					<%= link_to @pimp, method: :delete, data: { confirm: 'Are you sure?' } do %>
+		                <span class="glyphicon glyphicon-trash"></span>
+		                delete
+              		<% end %>
+              	</div>
 				<% end %>
 			</div>
 		</div>	
