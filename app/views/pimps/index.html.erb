@@ -1,16 +1,16 @@
 <div id="pimps" class="transitions-enabled">
   <% @pimps.each do |pimp| %>
     <div class="box panel panel-default">
-      <%= image_tag pimp.image.url(:medium) %>
+      <%= link_to image_tag(pimp.image.url(:medium)), pimp %>
       <div class="panel-body">
-        <%= pimp.description %>
-        <%= pimp.user_id %>
-        <%= pimp.user.email if pimp.user %>
-        <%= link_to 'Show', pimp %>
-        <% if pimp.user == current_user %>
-            <%= link_to 'Edit', edit_pimp_path(pimp) %>
-            <%= link_to 'Destroy', pimp, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
+        <%= pimp.description %><br/>
+        <strong><%= pimp.user.email if pimp.user %></strong>
+          <% if pimp.user == current_user %>
+            <div class="actions">
+              <%= link_to 'Edit', edit_pimp_path(pimp) %>
+              <%= link_to 'Destroy', pimp, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+        </div>
       </div>  
     </div>
   <% end %>
