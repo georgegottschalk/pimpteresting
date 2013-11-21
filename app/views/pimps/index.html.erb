@@ -3,26 +3,33 @@
 <% if user_signed_in? %>
   <div id="pimps" class="transitions-enabled">
     <% @pimps.each do |pimp| %>
-      <div class="box panel panel-default">
+   
+      <div class="box panel panel-default" style="padding:5px">
         <%= link_to image_tag(pimp.image.url(:medium)), pimp %>
+        
         <div class="panel-body center">
           <%= pimp.description %><br/>
           <strong><%= pimp.user.email if pimp.user %></strong>
-            <% if pimp.user == current_user %>
-              <div class="actions center">
-                <%= link_to edit_pimp_path(pimp) do %>
-                  <span class="glyphicon glyphicon-cog"></span>
-                  edit
-                <% end %>
-
-                <%= link_to pimp, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                  <span class="glyphicon glyphicon-trash"></span>
-                  delete
-                <% end %>
+            
+          <% if pimp.user == current_user %>
+            <div class="actions center">
+                
+              <%= link_to edit_pimp_path(pimp) do %>
+                <span class="glyphicon glyphicon-cog"></span>
+                edit
               <% end %>
-          </div>
+
+              <%= link_to pimp, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <span class="glyphicon glyphicon-trash"></span>
+                delete
+              <% end %>
+              
+            </div> 
+          <% end %>
+
         </div>  
       </div>
+    
     <% end %>
   </div>  
 <% end %>
