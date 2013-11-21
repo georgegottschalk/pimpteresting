@@ -9,7 +9,7 @@
         
         <div class="panel-body center">
           <%= pimp.description %><br/>
-          <strong><%= pimp.user.email if pimp.user %></strong>
+          <strong><%= pimp.user.name if pimp.user %></strong>
             
           <% if pimp.user == current_user %>
             <div class="actions center">

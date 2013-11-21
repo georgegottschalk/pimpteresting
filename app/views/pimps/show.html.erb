@@ -4,16 +4,16 @@
 	<div class="col-md-offset-2 col-md-8">
 		<div class="panel panel-default">
 			<div class="panel-heading center">
-				<%= image_tag @pimp.image.url(:medium) %>
+				<%= image_tag @pimp.image.url(:large) %>
 			</div>	
 			<div class="panel-body center">
 				<p><%= @pimp.description %></p>	
-				<p><strong><%= @pimp.user.email if @pimp.user %></strong></p>
+				<p><strong><%= @pimp.user.name if @pimp.user %></strong></p>
 
 				<% if @pimp.user == current_user %>
 				<div class="center">
 					<%= link_to edit_pimp_path(@pimp) do %> 
-						<span class="glyphicon glyphicon-cog"></span>
+						<span class="glyphicon glyphicon-edit"></span>
 						edit
 					<% end %>
 					<%= link_to @pimp, method: :delete, data: { confirm: 'Are you sure?' } do %>
