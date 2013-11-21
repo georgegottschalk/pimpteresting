@@ -4,7 +4,7 @@ class PimpsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @pimps = Pimp.all.order("created_at DESC")
+    @pimps = Pimp.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
   end
 
   def show

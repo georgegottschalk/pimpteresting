@@ -14,12 +14,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to raw('<span class="glyphicon glyphicon-usd"></span>pimps'), pimps_path %></li>
-        <li><%= link_to raw('<span class="glyphicon glyphicon-tower"></span>home'), root_path %></li>
-        <li><%= link_to "about", about_path %></li>
-        <li><%= link_to "zazz", zazz_path %></li>
-        <li><%= link_to raw('<span class="glyphicon glyphicon-tree-deciduous"></span>blaze'), blaze_path %></li>
         <% if user_signed_in? %>
+          <li><%= link_to raw('<span class="glyphicon glyphicon-usd"></span>pimps'), pimps_path %></li>
+          <li><%= link_to "about", about_path %></li>
+          <li><%= link_to "zazz", zazz_path %></li>
+          <li><%= link_to raw('<span class="glyphicon glyphicon-tree-deciduous"></span>blaze'), blaze_path %></li>
           <li><%= link_to raw('<span class="glyphicon glyphicon-plus"></span>new pimp'), new_pimp_path %></li>
           <li><%= link_to raw('<span class="glyphicon glyphicon-cog"></span>account settings'), edit_user_registration_path %></li>
           <li><%= link_to "log out", destroy_user_session_path, method: :delete %></li>
