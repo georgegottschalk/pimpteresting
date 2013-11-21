@@ -2,7 +2,7 @@ Pinteresting::Application.routes.draw do
   resources :pimps
 
   devise_for :users
-  root "pages#home"
+  root "pimps#index"
   get "about" => "pages#about"
   get "zazz" => "pages#zazz"
   get "blaze" => "pages#blaze"

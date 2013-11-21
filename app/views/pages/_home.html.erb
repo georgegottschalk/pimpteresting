@@ -1,11 +1,9 @@
 <div class="jumbotron center">
 	<h1>Fuck Yo Couch!</h1>
-	<% if user_signed_in? %>
-		YOU IN DA CLUB PLAYA!!!!
-	<% else %>
+	
 		<p>
 			<%= link_to "member login", new_user_session_path, class: "btn btn-primary" %>
 			<%= link_to "join the club", new_user_registration_path, class: "btn btn-primary" %>
 		</p>
-	<% end %>
+	
 </div>
